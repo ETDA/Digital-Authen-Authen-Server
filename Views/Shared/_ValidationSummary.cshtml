@@ -1,0 +1,15 @@
+﻿@if (ViewContext.ModelState.IsValid == false)
+{
+    <div class="alert alert-danger" id="loginAlert">
+        <strong>attention</strong>
+        <div asp-validation-summary="All" class="danger"></div>
+    </div>
+
+    <script type="text/javascript">
+        setTimeout(function () {
+
+            // Closing the alert
+            $('#loginAlert').alert('close');
+        }, 8000);
+    </script>
+}

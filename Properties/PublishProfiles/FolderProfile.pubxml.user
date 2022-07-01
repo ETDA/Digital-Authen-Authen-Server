@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\fido-oidc\athentication_server\Authentication.IdentityServer\bin\Release\net5.0\publish\</_PublishTargetUrl>
+    <History>True|2021-08-31T13:16:38.1935275Z;True|2021-08-31T20:11:45.4460014+07:00;True|2021-08-31T20:07:24.0277553+07:00;True|2021-08-31T20:01:47.8160855+07:00;True|2021-08-31T17:29:07.9907141+07:00;True|2021-08-31T12:29:18.3414555+07:00;True|2021-08-31T12:28:40.6763677+07:00;True|2021-08-31T12:25:35.7240271+07:00;True|2021-08-31T12:22:53.2585502+07:00;True|2021-08-31T12:15:23.8945787+07:00;True|2021-08-31T12:12:35.8248498+07:00;True|2021-08-31T11:19:13.0812088+07:00;False|2021-08-31T11:19:00.6875988+07:00;True|2021-08-31T10:41:17.6282533+07:00;True|2021-08-31T10:33:30.8923393+07:00;True|2021-08-31T09:32:04.3931907+07:00;True|2021-08-30T21:30:13.2352698+07:00;False|2021-08-30T21:29:59.2349128+07:00;True|2021-08-30T20:51:56.3963746+07:00;True|2021-08-29T11:11:32.6622055+07:00;</History>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,15 @@
+@using System.Diagnostics
+
+@{
+    var version = FileVersionInfo.GetVersionInfo(typeof(IdentityServer4.Hosting.IdentityServerMiddleware).Assembly.Location).ProductVersion.Split('+').First();
+}
+
+<div class="welcome-page">
+
+    <br /><br /><br /><br />
+
+    <h1 style="text-align: center">
+        <img src="~/ogo_digiAuthen.png" width="240" height="320">
+    </h1>
+
+</div>

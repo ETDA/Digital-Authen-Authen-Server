@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\fido-oidc\15092021\Digital_Authen\AuthenServer\Authentication.IdentityServer\bin\Release\net5.0\publish\</_PublishTargetUrl>
+    <History>True|2021-09-19T05:57:01.8906967Z;True|2021-09-19T09:55:07.2366402+07:00;</History>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,39 @@
+﻿@model LoginViewModel
+
+@using Microsoft.IdentityModel.Tokens
+
+
+@{
+    ViewData["Title"] = "System ERROR";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+
+<div class="text-center">
+    <h1 class="display-4" style="color:red">Sorry... The system may be temporarily error</h1>
+</div>
+
+<br />
+<br />
+
+@if (Model.ReturnUrl != null)
+{
+    var deReturnUrl = Base64UrlEncoder.Decode(Model.ReturnUrl);
+    <div class="text-center">
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <p style="font-size: 25px">Please try to scan QR Code again</p><br />
+            <a style="color:gold" href="@Url.Action("Login", "Account", new { ReturnUrl = deReturnUrl })" onclick="getInputValue();">Click to Scan QR Code</a>
+        </div>
+    </div>
+
+    <p id="show_spiner"></p>
+    <script>
+        function getInputValue() {
+            document.getElementById("show_spiner").innerHTML = "<div class=\"loading\"></div>";
+        }
+    </script>
+}
+
+

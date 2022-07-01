@@ -1,0 +1,104 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  TAG_LATEST: $CI_REGISTRY_IMAGE:latest
+  TAG_COMMIT: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+
+#build-authserver-staging:
+#  stage: build
+#  image: docker:19.03.15
+#  services:
+#    - name: docker:19.03.15-dind
+#      command: ["--mtu=1410"]
+#  variables:
+#    DOCKER_DRIVER: overlay2
+#    DOCKER_TLS_CERTDIR: ""
+#    DOCKER_HOST: tcp://docker:2375
+#  before_script:
+#    - docker info
+#    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+#  script:
+#    - docker build -f Dockerfile -t $TAG_COMMIT -t $TAG_LATEST .
+#    - docker push $TAG_LATEST
+#    - docker push $TAG_COMMIT
+#  retry:
+#    max: 2
+#    when:
+#      - runner_system_failure
+#      - stuck_or_timeout_failure
+#  environment:
+#    name: staging
+#    kubernetes:
+#      namespace: gitlab-runner
+#  only:
+#    - staging
+#  tags:
+#    - k8s-stg-runner
+
+#deploy-authserver-staging:
+#  stage: deploy
+#  image:
+#    name: bitnami/kubectl:latest
+#    entrypoint: [""]
+#  script:
+#    - kubectl --kubeconfig="$KUBE_CONFIG" set image deployment/authserver-deploy authserver=$TAG_COMMIT -n authserver-uat
+#  environment:
+#    name: staging
+#    kubernetes:
+#      namespace: authserver-uat
+#  only:
+#    - staging
+#  tags:
+#    - k8s-stg-runner
+#  when: manual
+
+
+build-authserver-prd:
+  stage: build
+  image: docker:19.03.15
+  services:
+    - name: docker:19.03.15-dind
+      command: ["--mtu=1410"]
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
+    DOCKER_HOST: tcp://docker:2375
+  before_script:
+    - docker info
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker build -f Dockerfile -t $TAG_COMMIT -t $TAG_LATEST .
+    - docker push $TAG_LATEST
+    - docker push $TAG_COMMIT
+  retry:
+    max: 2
+    when:
+      - runner_system_failure
+      - stuck_or_timeout_failure
+  environment:
+    name: prd
+    kubernetes:
+      namespace: gitlab-runner
+  only:
+    - prd
+  tags:
+    - k8s-stg-runner
+
+deploy-authserver-prd:
+  stage: deploy
+  image:
+    name: bitnami/kubectl:latest
+    entrypoint: [""]
+  script:
+    - kubectl --kubeconfig="$KUBE_CONFIG" set image deployment/authserver-deploy authserver=$TAG_COMMIT -n authserver-prd
+  environment:
+    name: prd
+    kubernetes:
+      namespace: authserver-prd
+  only:
+    - prd
+  tags:
+    - k8s-stg-runner
+  when: manual
